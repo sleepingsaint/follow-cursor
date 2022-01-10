@@ -1,0 +1,12 @@
+body{
+  margin: 0
+}
+
+div.credits {
+  font-family: sans-serif;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  margin: 0 auto;
+}
