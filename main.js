@@ -28,6 +28,16 @@ function init() {
 
   // loading model
   loader.load("super_meat_boy_free/scene.gltf", (gltf) => {
+    document.getElementById("container").style.display = "none";
+    // adding renderer element to html body
+    document.body.appendChild(renderer.domElement);
+
+    // adding credits div
+    const creditsElement = document.createElement("div");
+    creditsElement.innerText = credits;
+    creditsElement.className = "credits";
+
+    document.body.append(creditsElement);
     model = gltf.scene;
     scene.add(model);
   });
@@ -35,15 +45,15 @@ function init() {
   // add controls to model
   initModelControls();
 
-  // adding renderer element to html body
-  document.body.appendChild(renderer.domElement);
+  // // adding renderer element to html body
+  // document.body.appendChild(renderer.domElement);
 
-  // adding credits div
-  const creditsElement = document.createElement("div");
-  creditsElement.innerText = credits;
-  creditsElement.className = "credits";
+  // // adding credits div
+  // const creditsElement = document.createElement("div");
+  // creditsElement.innerText = credits;
+  // creditsElement.className = "credits";
 
-  document.body.append(creditsElement);
+  // document.body.append(creditsElement);
 
   animate();
 }
