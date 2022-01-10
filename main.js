@@ -29,6 +29,7 @@ function init() {
   // loading model
   loader.load("super_meat_boy_free/scene.gltf", (gltf) => {
     document.getElementById("container").style.display = "none";
+
     // adding renderer element to html body
     document.body.appendChild(renderer.domElement);
 
@@ -38,22 +39,13 @@ function init() {
     creditsElement.className = "credits";
 
     document.body.append(creditsElement);
+
     model = gltf.scene;
     scene.add(model);
   });
 
   // add controls to model
   initModelControls();
-
-  // // adding renderer element to html body
-  // document.body.appendChild(renderer.domElement);
-
-  // // adding credits div
-  // const creditsElement = document.createElement("div");
-  // creditsElement.innerText = credits;
-  // creditsElement.className = "credits";
-
-  // document.body.append(creditsElement);
 
   animate();
 }
@@ -78,6 +70,24 @@ function initModelControls() {
         model.rotation.x = - ((h - y) / h);
       } else model.rotation.x = (y - h) / h;
     }
+  });
+
+  document.addEventListener('touchmove', (event) => {
+    
+    if (model !== undefined) {
+      let x = event.touches[0].clientX, y = event.touches[0].clientY;
+      let w = window.innerWidth / 2;
+      let h = window.innerHeight / 2;
+
+      if (x >= 0 && x < window.innerWidth / 2) {
+        model.rotation.y = -((w - x) / w);
+      } else model.rotation.y = (x - w) / w;
+
+      if (y >= 0 && y < window.innerHeight / 2) {
+        model.rotation.x = - ((h - y) / h);
+      } else model.rotation.x = (y - h) / h;
+    }
+
   })
 }
 
