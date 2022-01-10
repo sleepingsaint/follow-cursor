@@ -27,7 +27,7 @@ function init() {
   })
 
   // loading model
-  loader.load("assets/super_meat_boy_free/scene.gltf", (gltf) => {
+  loader.load("super_meat_boy_free/scene.gltf", (gltf) => {
     model = gltf.scene;
     scene.add(model);
   });
@@ -42,7 +42,7 @@ function init() {
   const creditsElement = document.createElement("div");
   creditsElement.innerText = credits;
   creditsElement.className = "credits";
-  
+
   document.body.append(creditsElement);
 
   animate();
